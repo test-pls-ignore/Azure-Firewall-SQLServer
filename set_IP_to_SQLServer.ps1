@@ -30,6 +30,8 @@ $FirewallRuleName = "your rule name"
 #current external  IP adress
 $myIP = (Invoke-WebRequest -uri "https://api.ipify.org/").Content
 
+$Tenant = "your Directory ID"
+
 #get ResourceGroup
 if ([string]::IsNullOrEmpty($ResourceGroup)) 
 {$ResourceGroupName=$ResourceGroupDict.$Environment} 
@@ -45,7 +47,7 @@ else
 
 #connect to azure
 Connect-AzAccount
-Set-AzContext -Tenant TENANTID -Subscription $Subscription.$Environment
+Set-AzContext -Tenant $Tenant -Subscription $Subscription.$Environment
 
 
 #show current firewall rule
